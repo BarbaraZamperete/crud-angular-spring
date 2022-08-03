@@ -1,21 +1,24 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { first, tap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
-import { Course } from './../model/course';
+import { Course } from '../model/course';
+import { first, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoursesService {
 
-  private readonly API = 'api/courses'
+  private readonly API = 'api/courses';
+
   constructor(private httpClient: HttpClient) { }
 
   list() {
-    return this.httpClient.get<Course[]>(this.API).pipe(
-      first(), //assim que recebe a resposta o serviço fecha e não fica ouvindo p sempre
-      tap(course => console.log(course))
-    )
+    return this.httpClient.get<Course[]>(this.API)
+      .pipe(
+        first(),
+        // delay(5000),
+        tap(courses => console.log(courses))
+      );
   }
 }
