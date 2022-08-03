@@ -1,3 +1,4 @@
+import { CoursesService } from './../services/courses.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -11,7 +12,8 @@ export class CourseFormComponent implements OnInit {
   form: FormGroup //grupo de compos
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private service: CoursesService
   ) {
     this.form = this.formBuilder.group({
       name: [null], //inicializa o campo sem valor
@@ -22,4 +24,11 @@ export class CourseFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit(){
+    this.service.save(this.form.value).subscribe(result => console.log(result))
+  }
+
+  onCancel(){
+
+  }
 }
