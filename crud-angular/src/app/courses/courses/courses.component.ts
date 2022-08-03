@@ -23,7 +23,7 @@ export class CoursesComponent implements OnInit {
   ) {
     this.courses$ = this.coursesService.list()
       .pipe(
-        catchError(error => {
+        catchError(_error => {
           this.onError('Erro ao carregar cursos.')
           return of([]) //cria um observable de array vazio
         })
@@ -31,6 +31,8 @@ export class CoursesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // TODO document why this method 'ngOnInit' is empty
+
   }
 
 
