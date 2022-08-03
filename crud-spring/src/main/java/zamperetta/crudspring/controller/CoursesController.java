@@ -28,7 +28,7 @@ public class CoursesController {
         return courseRepository.findAll();
     }
 
-    @ResponseStatus(code = HttpStatus.CREATED) //retorna status 201
+    @ResponseStatus(code = HttpStatus.CREATED) // retorna status 201
     @PostMapping
     public Course create(@RequestBody Course course) {
         return courseRepository.save(course);
