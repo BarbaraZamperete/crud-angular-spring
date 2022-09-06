@@ -14,7 +14,6 @@ import { Course } from './../model/course';
 })
 export class CoursesComponent implements OnInit {
 
-
   courses$: Observable<Course[]>
 
   constructor(
@@ -37,15 +36,13 @@ export class CoursesComponent implements OnInit {
 
   }
 
-
   onError(errorMsg: string) {
     this.dialog.open(ErrorDialogComponent, {
       data: errorMsg
     })
   }
 
-  onAdd(){
-    console.log('onAdd')
-    this.router.navigate(['new'], {relativeTo: this.route}) //go to courses/new
+  onAdd() {
+    this.router.navigate(['new'], { relativeTo: this.route }) //go to courses/new
   }
 }
